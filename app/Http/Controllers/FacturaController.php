@@ -20,7 +20,7 @@ class FacturaController extends Controller
      */
     public function index()
     {
-        $facturas = Factura::paginate(10);
+        $facturas = Factura::orderBy('created_at', 'DESC')->paginate(10);
         $compras  = Compra::where('factura', NULL)->get();
 
         if($compras->count() > 0 ){
